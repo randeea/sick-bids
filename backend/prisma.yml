@@ -1,2 +1,7 @@
-endpoint: https://eu1.prisma.sh/deeeea133-0fe8b4/siccccccccck-fits/dev
+endpoint: ${env:PRISMA_ENDPOINT}
 datamodel: datamodel.prisma
+# secret: ${env:PRISMA_SECRET}
+# UNCOMMENT JUST BEFORE IT GOES TO PRODUCTION
+hooks:
+    post-deploy:
+        - graphql get-schema -p prisma
